@@ -123,30 +123,71 @@
 // }
 // let x = sumZero([3,1,2,-8]);
 // console.log(x);
+//************* SOME RANDOM CODE CHALLENGE ****************/
+
+// function countUniqueValues(arr){
+//     let i=0;
+//     let j=1;
+//     while(j !==arr.length){
+//         if(arr[i]!==arr[j]){
+//             i++;
+//             arr[i]=arr[j];
+//             j++;
+//         }
+//         else{
+//             j++;
+//         }
+//     }
+//     return i+1;
+// }
+
+// let x = countUniqueValues([1,2,3,4,4,4,7,7,12,12,13]);
+
+// function factorial(num){
+//     if(num === 1)
+//         return 1;
+//     else
+//         return num*factorial(num-1);
+// }
+
+// console.log(factorial(400))
 
 
+// //***************Binary Search*****************/
+// function computeMiddle(left, right){
+//     return Math.floor((left+right) /2);
+// }
+// function binarySearch(arr, val, start=0, end=arr.length){
+//     let middle = computeMiddle(start, end);
+//     if(arr[middle]===val){
+//         return middle
+//     }
+//     if(val < arr[middle])
+//         return binarySearch(arr, val, start, end=middle-1);
+//     if(val > arr[middle])
+//         return binarySearch(arr, val, start=middle+1, end);
+// }
 
-function countUniqueValues(arr){
-    let i=0;
-    let j=1;
-    while(j !==arr.length){
-        if(arr[i]!==arr[j]){
-            i++;
-            arr[i]=arr[j];
-            j++;
-        }
-        else{
-            j++;
-        }
-    }
-    return i+1;
-}
 
-let x = countUniqueValues([1,2,3,4,4,4,7,7,12,12,13])
+// console.log(binarySearch([1,2,3,5,6,6,7],5));
 
-let arr = [1,24,5,2,3];
-let arr_forEach = arr.forEach(item => item**2);
-let arr_map = arr.map(item => item**2);
+// function stringMatching(str1, str2){
+//     let count = 0;
+//     for(let i=0; i<str1.length-str2.length+1; i++){
+//         if(str1.slice(i,i+str2.length)===str2)
+//             count++;
+//     }
+//     return count;
+// }
 
-console.log('ForEachArray: '+ arr_forEach);
-console.log('MapArray '+ arr_map)
+// function stringMatching(long, pattern){
+//     let count = 0;
+//     for(let i=0; i< long.length; i++){
+//         for(let j=0; j< pattern.length; j++){
+//             if(long[i+j]!==pattern[j]) break;
+//             if(j === pattern.length-1) count++;
+//         }
+//     }
+//     return count;
+// }
+// console.log(stringMatching('helloworldllollollo','llo'));
