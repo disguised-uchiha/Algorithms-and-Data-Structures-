@@ -191,3 +191,19 @@
 //     return count;
 // }
 // console.log(stringMatching('helloworldllollollo','llo'));
+
+
+//****************** Bubble sorting Naive Approach ****************/
+// function bubbleSort(arr) {
+//     for(let j=arr.length; j>0; j--) {
+//         for(let i=0; i < j-1; i++) {
+//             if(arr[i]>arr[i+1]) {
+//                 [arr[i],arr[i+1]]=[arr[i+1],arr[i]];
+//             }
+//             console.log(arr);
+//         }
+//     }
+// }
+
+// bubbleSort([2,552,12,533,12,22]);
+
