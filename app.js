@@ -207,3 +207,22 @@
 
 // bubbleSort([2,552,12,533,12,22]);
 
+function selectionSort(arr){
+    let min;
+    //First iterate through the first element and set it to min
+    // then using another loop traverse one position ahead tilll end and find the min
+    // when you found the min update it
+    // and replace it with i's position so that the minimum is in the starting.
+    for(let i=0; i<arr.length; i++){
+        min = i;
+        for(let j=i+1; j<arr.length; j++){
+            if(arr[j]<arr[min]){
+                min = j;
+            }
+        }
+        [arr[i], arr[min]] = [arr[min], arr[i]]
+    }
+    console.log(arr);
+}
+
+selectionSort([1,2,6,2,2,4,52,3]);
