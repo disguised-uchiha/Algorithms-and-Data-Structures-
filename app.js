@@ -228,3 +228,88 @@
 // }
 
 // selectionSort([1,2,6,2,2,4,52,3]);
+
+//*************************** Merge Sort ***********************/
+
+// function merge(arr1, arr2){
+//     let i=0;
+//     let j=0;
+//     let sortedArr = [];
+//     while(i!==arr1.length && j!== arr2.length){
+//         if(arr1[i]<arr2[j]){
+//             sortedArr.push(arr1[i]);
+//             i++;
+//         }
+//         else{
+//             sortedArr.push(arr2[j])
+//             j++;
+//         }      
+//     }
+//     if(i==arr1.length && j<=arr2.length-1){
+//         sortedArr.push(...arr2.slice(j));
+//     }
+//     if(j==arr2.length && i<=arr1.length-1){
+//         sortedArr.push(...arr1.slice(i));
+//     }
+//     return sortedArr;
+// }
+ 
+
+// let x = mergeSort([11, 66, 1, 32, 2, 50, 12]);
+// console.log(x);
+
+// function mergeSort(arr){
+//     if(arr.length <= 1) return arr;
+//     let middle = Math.floor(arr.length/2);
+//     let left = mergeSort(arr.slice(0,middle));
+//     let right = mergeSort(arr.slice(middle));
+//     return merge(left, right);
+// }
+
+class Node {
+    constructor(val){
+        this.value = val;
+        this.next = null;
+    }
+}
+
+class SinglyLinkedList{
+    constructor(){
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+    }
+    push(val){
+        let newNode = new Node(val);
+        if(this.length===0){
+            this.head = newNode;
+            this.tail = newNode;
+            this.length++;
+            return;
+        }
+        this.tail.next = newNode;
+        this.tail = newNode;
+        this.length++;
+        return this;
+    }
+
+    pop(){
+        if(!this.head){
+            return 'The List is Empty';
+        }
+        let newTail = this.head;
+        while(newTail.next.next!==null){
+            newTail = newTail.next;
+        }
+        newTail.next = null;
+        this.tail = newTail;
+        this.length--;
+    }
+}
+let sl = new SinglyLinkedList();
+sl.push('hello');
+sl.push('world');
+sl.push('harsh');
+console.log(sl);
+sl.pop();
+console.log(sl);
