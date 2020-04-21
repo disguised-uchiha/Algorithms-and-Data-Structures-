@@ -301,15 +301,42 @@ class SinglyLinkedList{
         while(newTail.next.next!==null){
             newTail = newTail.next;
         }
+        let removedNode = newTail.next;
         newTail.next = null;
         this.tail = newTail;
         this.length--;
+        if(this.head.next === null){
+            this.head = this.tail = null;
+        }
+        return removedNode;
+    }
+    shift(){
+        if(!this.head){
+            return undefined;
+        }
+        let removedHead = this.head;
+        this.head = this.head.next;
+        this.length--;
+        if(this.head.next === null){
+            this.head = this.tail = null;
+        }
+        return removedHead;
+    }
+
+    unshift(val){
+        let newNode = new Node(val);
+        if(!this.head){
+            this.head = newNode;
+            this.tail = newNode;
+            this.length++;
+            return;
+        }
+        newNode.next = this.head;
+        this.head = newNode;
+        this.length++;
+        return this;
     }
 }
 let sl = new SinglyLinkedList();
-sl.push('hello');
-sl.push('world');
-sl.push('harsh');
-console.log(sl);
-sl.pop();
+sl.unshift('bantai');
 console.log(sl);
