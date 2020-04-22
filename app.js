@@ -336,7 +336,39 @@ class SinglyLinkedList{
         this.length++;
         return this;
     }
+    get(index){
+        let nodeSearched = this.head;
+        if(index<this.length){
+            for(let i=1; i<=index; i++){
+                nodeSearched = nodeSearched.next;
+            }
+            return nodeSearched;
+        }
+        return null;
+    }
+    set(index, value){
+        let node = this.get(index);
+        if(node){
+        node.value = value;
+        return true;
+        }
+        return false;
+    }
+    insert(index, value){
+        let newNode = new Node(value);
+        let node = this.get(index-1);
+        if(node){
+            newNode.next = node.next;
+            node.next = newNode;
+            return true;
+        }
+        return false;
+    }
 }
 let sl = new SinglyLinkedList();
 sl.unshift('bantai');
-console.log(sl);
+sl.push('helo');
+sl.push('world');
+sl.set(0,'dd');
+sl.insert(1,'hello')
+console.log(sl.get(3));
