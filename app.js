@@ -265,110 +265,142 @@
 //     let right = mergeSort(arr.slice(middle));
 //     return merge(left, right);
 // }
+//************** Singly Linked List ***************/
+// class Node {
+//     constructor(val){
+//         this.value = val;
+//         this.next = null;
+//     }
+// }
 
-class Node {
-    constructor(val){
-        this.value = val;
-        this.next = null;
+// class SinglyLinkedList{
+//     constructor(){
+//         this.head = null;
+//         this.tail = null;
+//         this.length = 0;
+//     }
+//     push(val){
+//         let newNode = new Node(val);
+//         if(this.length===0){
+//             this.head = newNode;
+//             this.tail = newNode;
+//             this.length++;
+//             return;
+//         }
+//         this.tail.next = newNode;
+//         this.tail = newNode;
+//         this.length++;
+//         return this;
+//     }
+
+//     pop(){
+//         if(!this.head){
+//             return 'The List is Empty';
+//         }
+//         let newTail = this.head;
+//         while(newTail.next.next!==null){
+//             newTail = newTail.next;
+//         }
+//         let removedNode = newTail.next;
+//         newTail.next = null;
+//         this.tail = newTail;
+//         this.length--;
+//         if(this.head.next === null){
+//             this.head = this.tail = null;
+//         }
+//         return removedNode;
+//     }
+
+//     shift(){
+//         if(!this.head){
+//             return undefined;
+//         }
+//         let removedHead = this.head;
+//         this.head = this.head.next;
+//         this.length--;
+//         if(this.head.next === null){
+//             this.head = this.tail = null;
+//         }
+//         return removedHead;
+//     }
+
+//     unshift(val){
+//         let newNode = new Node(val);
+//         if(!this.head){
+//             this.head = newNode;
+//             this.tail = newNode;
+//             this.length++;
+//             return;
+//         }
+//         newNode.next = this.head;
+//         this.head = newNode;
+//         this.length++;
+//         return this;
+//     }
+
+//     get(index){
+//         let nodeSearched = this.head;
+//         if(index<this.length){
+//             for(let i=1; i<=index; i++){
+//                 nodeSearched = nodeSearched.next;
+//             }
+//             return nodeSearched;
+//         }
+//         return null;
+//     }
+
+//     set(index, value){
+//         let node = this.get(index);
+//         if(node){
+//         node.value = value;
+//         return true;
+//         }
+//         return false;
+//     }
+
+//     insert(index, value){
+//         let newNode = new Node(value);
+//         let node = this.get(index-1);
+//         if(node){
+//             newNode.next = node.next;
+//             node.next = newNode;
+//             return true;
+//         }
+//         return false;
+//     }
+// }
+
+// let sl = new SinglyLinkedList();
+// sl.unshift('bantai');
+// sl.push('helo');
+// sl.push('world');
+// sl.set(0,'dd');
+// sl.insert(1,'hello')
+// console.log(sl.get(3));
+
+function same(arr1, arr2){
+    //----if you want to check by length as well 
+    // if(arr1.length != arr2.length){
+    //     return false;
+    // }
+
+    // creating an object with key => arr1 value and value => number of time that value repeat;
+    let frequencyCounter1 = {};
+    let frequencyCounter2 = {};
+    for(let val of arr1){
+        frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
     }
+    for(let val of arr2){
+        frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
+    }
+    for(let key in frequencyCounter1){
+        //check if the key is present in arr2 or not 
+        if(!(key in frequencyCounter2)) return false;
+        //check the number of times the value repetiton is same or not;
+        if(frequencyCounter2[key]!==frequencyCounter1[key]) return false;
+    }
+    return true;
 }
 
-class SinglyLinkedList{
-    constructor(){
-        this.head = null;
-        this.tail = null;
-        this.length = 0;
-    }
-    push(val){
-        let newNode = new Node(val);
-        if(this.length===0){
-            this.head = newNode;
-            this.tail = newNode;
-            this.length++;
-            return;
-        }
-        this.tail.next = newNode;
-        this.tail = newNode;
-        this.length++;
-        return this;
-    }
-
-    pop(){
-        if(!this.head){
-            return 'The List is Empty';
-        }
-        let newTail = this.head;
-        while(newTail.next.next!==null){
-            newTail = newTail.next;
-        }
-        let removedNode = newTail.next;
-        newTail.next = null;
-        this.tail = newTail;
-        this.length--;
-        if(this.head.next === null){
-            this.head = this.tail = null;
-        }
-        return removedNode;
-    }
-    shift(){
-        if(!this.head){
-            return undefined;
-        }
-        let removedHead = this.head;
-        this.head = this.head.next;
-        this.length--;
-        if(this.head.next === null){
-            this.head = this.tail = null;
-        }
-        return removedHead;
-    }
-
-    unshift(val){
-        let newNode = new Node(val);
-        if(!this.head){
-            this.head = newNode;
-            this.tail = newNode;
-            this.length++;
-            return;
-        }
-        newNode.next = this.head;
-        this.head = newNode;
-        this.length++;
-        return this;
-    }
-    get(index){
-        let nodeSearched = this.head;
-        if(index<this.length){
-            for(let i=1; i<=index; i++){
-                nodeSearched = nodeSearched.next;
-            }
-            return nodeSearched;
-        }
-        return null;
-    }
-    set(index, value){
-        let node = this.get(index);
-        if(node){
-        node.value = value;
-        return true;
-        }
-        return false;
-    }
-    insert(index, value){
-        let newNode = new Node(value);
-        let node = this.get(index-1);
-        if(node){
-            newNode.next = node.next;
-            node.next = newNode;
-            return true;
-        }
-        return false;
-    }
-}
-let sl = new SinglyLinkedList();
-sl.unshift('bantai');
-sl.push('helo');
-sl.push('world');
-sl.set(0,'dd');
-sl.insert(1,'hello')
-console.log(sl.get(3));
+let x = same([1,2,4,5,5],[5, 5, 4, 2, 1]);
+console.log(x);
