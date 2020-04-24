@@ -377,30 +377,94 @@
 // sl.set(0,'dd');
 // sl.insert(1,'hello')
 // console.log(sl.get(3));
+//********************** Binary Search Tree ************/
+// class Node {
+//     constructor(value){
+//         this.value = value;
+//         this.left = null;
+//         this.right =  null; 
+//     }
+// }
 
-function same(arr1, arr2){
-    //----if you want to check by length as well 
-    // if(arr1.length != arr2.length){
-    //     return false;
-    // }
+// class BST{
+//     constructor(){
+//         this.root = null;
+//         this.count = 0;
+//     }
+//     insert(val){
+//         let newNode = new Node(val);
+//         let currentNode = this.root;
+//         while(true){
+//             if(!this.root){
+//                 this.root = newNode;
+//                 return this;
+//             }
+//             if(val<currentNode.value){
+//                 if(currentNode.left === null){
+//                     currentNode.left = newNode;
+//                     return this;
+//                 }
+//                 else {currentNode = currentNode.left;}
+//             }
+//             if(val>currentNode.value){
+//                 if(currentNode.right === null){
+//                     currentNode.right = newNode;
+//                     return this;
+//                 }
+//                 else {currentNode = currentNode.right;}
+//             }
+//             if(val==currentNode.value){
+//                 currentNode.count++;
+//                 return this;
+//             }
+//         }
+//     }
+//     find(val){
+//         let currentNode = this.root;
+//         while(true){
+//             if(val === currentNode.value) return true;
+//             if(val < currentNode.value && currentNode.left !== null){
+//                 currentNode = currentNode.left;
+//             }
+//             else if(val > currentNode.value && currentNode.right !== null){
+//                 currentNode = currentNode.right;
+//             }
+//             else{
+//                 return false;
+//             }
+//         }
+//     }
+// }
 
-    // creating an object with key => arr1 value and value => number of time that value repeat;
-    let frequencyCounter1 = {};
-    let frequencyCounter2 = {};
-    for(let val of arr1){
-        frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
+// let tree = new BST();
+// tree.insert(10);
+// tree.insert(5);
+// tree.insert(3);
+// tree.insert(15);
+// tree.insert(11);
+// tree.insert(16);
+// console.log(tree.find(15));
+
+let EventEmitter = require('events');
+let util = require('util');
+class Person{
+    constructor(firstName, lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
-    for(let val of arr2){
-        frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
+    greet(){
+        console.log(`Hello ${this.firstName} ${this.lastName}`);
     }
-    for(let key in frequencyCounter1){
-        //check if the key is present in arr2 or not 
-        if(!(key in frequencyCounter2)) return false;
-        //check the number of times the value repetiton is same or not;
-        if(frequencyCounter2[key]!==frequencyCounter1[key]) return false;
-    }
-    return true;
 }
+class Policeman extends Person{
+    constructor(fn , ln){
+        super(fn , ln);
+        this.badge = 1234;
+    }
+}
+// util.inherits(Policeman, Person);
+let policeman = new Policeman('h','h');
+console.log(policeman.greet())
 
-let x = same([1,2,4,5,5],[5, 5, 4, 2, 1]);
-console.log(x);
+
+
