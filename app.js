@@ -434,6 +434,19 @@
 //             }
 //         }
 //     }
+//     bredthFirstSearch(){
+//         let queue = [this.root];
+//         let visited = [];
+//         while(queue.length){
+//             let currentNode = queue.shift();
+//             if(currentNode.left)
+//             queue.push(currentNode.left);
+//             if(currentNode.right)
+//             queue.push(currentNode.right);
+//             visited.push(currentNode.value);
+//         }
+//         return visited;
+//     }
 // }
 
 // let tree = new BST();
@@ -443,28 +456,46 @@
 // tree.insert(15);
 // tree.insert(11);
 // tree.insert(16);
-// console.log(tree.find(15));
-
-let EventEmitter = require('events');
-let util = require('util');
-class Person{
-    constructor(firstName, lastName){
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-    greet(){
-        console.log(`Hello ${this.firstName} ${this.lastName}`);
-    }
-}
-class Policeman extends Person{
-    constructor(fn , ln){
-        super(fn , ln);
-        this.badge = 1234;
-    }
-}
-// util.inherits(Policeman, Person);
-let policeman = new Policeman('h','h');
-console.log(policeman.greet())
+// console.log(tree.bredthFirstSearch());
 
 
+//         10
+//     5       15
+//    3       11  16
 
+//***********Event and EventEmitter in JavaScript *******/
+// let EventEmitter = require('events');
+// let util = require('util');
+// class Person{
+//     constructor(firstName, lastName){
+//         this.firstName = firstName;
+//         this.lastName = lastName;
+//     }
+//     greet(){
+//         console.log(`Hello ${this.firstName} ${this.lastName}`);
+//     }
+// }
+// class Policeman extends Person{
+//     constructor(fn , ln){
+//         super(fn , ln);
+//         this.badge = 1234;
+//     }
+// }
+// // util.inherits(Policeman, Person);
+// let policeman = new Policeman('h','h');
+// console.log(policeman.greet())
+
+
+//********** HEAP DATASTRUCTURE *************/
+
+// let arr = [100,40,23]
+// function heapInsert(value){
+//     arr.push(value);
+//     let index = arr.length -1;
+//     let maxHeapNode = Math.floor((index-1)/2);
+//     if(arr[index]>arr[maxHeapNode]){
+//         [arr[index],arr[maxHeapNode]] = [arr[maxHeapNode], arr[index]];
+//     }
+// }
+// heapInsert(101);
+// console.log(arr);
