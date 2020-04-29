@@ -499,3 +499,32 @@
 // }
 // heapInsert(101);
 // console.log(arr);
+
+class Graph{
+    constructor(){
+        this.adjacencyList = {};
+    }
+    addVertex(vertex){
+        if(!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+
+    }
+    addEdge(vertex1, vertex2){
+        if(!this.adjacencyList[vertex1].includes(vertex2)) this.adjacencyList[vertex1].push(vertex2);
+        if(!this.adjacencyList[vertex2].includes(vertex1)) this.adjacencyList[vertex2].push(vertex1);
+    }
+    removeEdge(vertex1, vertex2){
+        let adjList1 = this.adjacencyList[vertex1];
+        let adjList2 = this.adjacencyList[vertex2];
+        adjList1 = adjList1.splice(vertex2, 1);
+        adjList2 = adjList2.splice(vertex1, 1);
+    }
+}
+
+let graph = new Graph();
+graph.addVertex('Tokyo');
+graph.addVertex('India');
+graph.addVertex('Bihar');
+graph.addVertex('Dallas');
+graph.addEdge('Bihar','India')
+graph.removeEdge('Bihar','India')
+console.log(graph);
